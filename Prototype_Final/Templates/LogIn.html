@@ -1,0 +1,18 @@
+{% extends "Template.html" %}
+
+{% block header %}
+    {% block title %} GLH - Log In {% endblock %}
+{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('login_process') }}" method="POST">
+    <div class="content">
+    <div class="TextIn">
+    <input type="text" name="username">
+    <input type="password" name="password" >
+    </div>
+    <div class="Submit"><input style="align-items: center;" type="submit"></div>
+</form>
+<a href="{{ url_for('register') }}">Register</a>
+</div>
+{% endblock %}

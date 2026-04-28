@@ -1,0 +1,48 @@
+{% extends "Template.html" %}
+
+{% block header %}
+    {% block title %} GLH - Market {% endblock %}
+{% endblock %}
+
+{% block content %}
+{% if products %}
+<table class="MarketTable">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Product Description</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Delivery</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       {% for product in products %}
+            <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.desc }}</td>
+            <td>{{ product.units }}</td>
+            <td>${{ product['unit-price'] }}</td>
+            <td>{{ "Yes" if product.del|string == 'True' else "No" }}</td>
+            <td>
+                <form action="{{ url_for('add_to_basket') }}" method="POST">
+                    <input type="hidden" name="item_id" value="{{ product.id }}">
+                    {% if product.units|int > 0 %}
+                        <button type="submit">Add to Basket</button>
+                    {% else %}
+                        <button type="submit" disabled>Not In Stock</button>
+                    {% endif %}
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% else %}
+<div class="error-message">
+    <p>Error: No products are currently available in the market.</p>
+</div>
+{% endif %}
+{% endblock %}

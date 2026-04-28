@@ -1,0 +1,127 @@
+.Navbar {
+        color: white;
+        background-color: #404957;
+        border-style: solid;
+        border-color: #5a940a;
+        padding-bottom: 0px;
+        align-items: center;
+        }
+ul {
+    text-align: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul li a:link, 
+ul li a:visited, 
+ul li a:active {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: inline-block;
+}
+
+ul li a:hover {
+    color: white;
+    background-color: #944f0a;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: inline-block;
+}
+
+.content {
+    transform: scale(1.5);
+    transform-origin: top center;
+    width: 66.6% !important; 
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 50px; 
+    min-height: 70vh;
+    font-family: sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; 
+}
+
+
+.TextIn input {
+    height: 45px; 
+    width: 400px;
+    padding: 10px 15px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.TextIn label {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.Submit input[type="submit"] {
+    background-color: #5a940a;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.Submit input[type="submit"]:hover {
+    background-color: #944f0a;
+}
+
+.content a {
+    color: #404957;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.MarketTable {
+    width: 60%;
+    font-family: sans-serif;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px auto
+}
+
+.MarketTable tbody {
+    text-align: center;
+}
+
+.BlockText {
+    text-align: center;
+    text-wrap-mode: wrap;
+}
+
+/* This CSS was made by GAI, chat link in  chatLinks. Used as my previous method wouldn't work properly */
+.admin-container { padding: 20px; font-family: sans-serif; }
+.admin-tabs { margin-bottom: 20px; border-bottom: 2px solid #ccc; }
+.tab-btn { padding: 10px 20px; cursor: pointer; border: none; background: none; font-size: 16px; }
+.tab-btn.active { border-bottom: 3px solid #007bff; color: #007bff; font-weight: bold; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.search-section { margin-bottom: 15px; }
+#adminSearch { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+.admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.admin-table th, .admin-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+.admin-table th { background-color: #f8f9fa; }
+.delete-btn, .delete-link { color: red; cursor: pointer; text-decoration: none; }
+.edit-link { color: blue; text-decoration: none; margin-right: 10px; }

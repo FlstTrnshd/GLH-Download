@@ -1,0 +1,99 @@
+{% extends "Template.html" %}
+{% block header %}
+    {% block title %} GLH - Admin Panel {% endblock %}
+{% endblock %}
+{% block content %}
+<div class="admin-container">
+    <div class="admin-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'UserTab')">Manage Users</button>
+        <button class="tab-btn" onclick="openTab(event, 'ProductTab')">Manage Listings</button>
+    </div>
+
+    <div id="UserTab" class="tab-content active">
+        <h2>Registered Users</h2>
+        <table class="admin-table" id="userTable">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Account Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>
+                        <form action="{{ url_for('update_user_role', user_id=user.id) }}" method="POST" style="display:inline;">
+                            <select name="new_role" onchange="this.form.submit()">
+                                {% for role in roles %}
+                                <option value="{{ role }}" {% if user.AccType == role %}selected{% endif %}>{{ role }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <button class="delete-btn" onclick="confirmDeleteUser('{{ user.id }}')">Delete User</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="ProductTab" class="tab-content">
+        <h2>Global Listings</h2>
+        <table class="admin-table" id="productTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product</th>
+                    <th>Lister</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.lister }}</td>
+                    <td>£{{ product['unit-price'] }}</td>
+                    <td>
+                        <a href="{{ url_for('EditProd', prod_id=product.id) }}" class="edit-link">Edit</a>
+                        <a href="{{ url_for('delete_prod', prod_id=product.id) }}" 
+                           class="delete-link" 
+                           onclick="return confirm('Administrative Delete: Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    function confirmDeleteUser(userId) {
+        if (confirm("WARNING: This will permanently delete this user account. Proceed?")) {
+            window.location.href = "/delete_user/" + userId;
+        }
+    }
+</script>
+{% endblock %}

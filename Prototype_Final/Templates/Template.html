@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='WebCSS.css') }}">
+<div Class="Navbar">
+    <h1>{% block header %}{% endblock %}</h1>
+<ul>
+    <li>
+    <a href="{{ url_for('main_page') }}">Main</a>
+    <a href="{{ url_for('market') }}">Market</a>
+    <a href="{{ url_for('about') }}">About Us</a>
+    {% if status == 'Administrator' or status == 'Producer' %}
+    <a href="{{ url_for('AddProd')}}">Add Listing</a>
+    <a href="{{ url_for('EditProdList')}}">Edit Listing</a>
+    {% endif %}
+    {% if status == 'Administrator' %}
+    <a href="{{ url_for('AdminPanel')}}">Admin Panel</a>
+    {% endif %}
+    {% if signedIn != True %}
+    <a href="{{ url_for('LogIn')}}">Log In</a>
+    {% endif %}
+    {% if signedIn == True %}
+    <a href="{{ url_for('basket') }}">Basket</a>
+    <a href="{{ url_for('SignOut') }}">Sign Out</a>
+    {% endif %}
+    </li>
+</ul>
+</div>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>

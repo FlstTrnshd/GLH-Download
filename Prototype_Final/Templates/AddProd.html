@@ -1,0 +1,20 @@
+{% extends "Template.html" %}
+
+{% block header %}
+    {% block title %} GLH - Add Listing {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <form action="{{ url_for('add_prod_process') }}" method="POST">
+        <div class="TextIn">
+            <label>Item Name<br><input type="text" name="name"></label>
+            <label>Item Description<br><input type="text" name="desc"></label>
+            <label>Units<br><input type="number" name="units" min="1"></label>
+            <label>Price per Unit<br><input type="number" name="unit-price" step="any" min="1"></label>
+            <label>Delivery<input type="checkbox" name="Delivery"></label>
+            <div class="Submit"><input style="align-items: center;" type="submit"></div>
+        </div>
+    </form>
+</div>
+{% endblock %}

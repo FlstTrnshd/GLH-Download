@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Test 4",
+        "lister": "Tester1",
+        "desc": "Test Prod",
+        "units": 3,
+        "unit-price": "1",
+        "id": "Prod-01"
+    },
+    {
+        "name": "Test 7",
+        "lister": "Tester1",
+        "desc": "Test Prod",
+        "units": 23,
+        "unit-price": "7",
+        "id": "Prod-02"
+    }
+]

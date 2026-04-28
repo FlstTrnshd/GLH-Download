@@ -1,0 +1,36 @@
+{% extends "Template.html" %}
+
+{% block header %}
+    {% block title %} GLH - Basket {% endblock %}
+{% endblock %}
+
+{% block content %}
+<h2>Your Basket</h2>
+{% if basket_items %}
+<table class="MarketTable">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+       {% for item in basket_items %}
+            <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.desc }}</td>
+            <td>${{ "%.2f"|format(item.price) }}</td>
+            <td>{{ item.qty }}</td>
+            <td>${{ "%.2f"|format(item.subtotal) }}</td>
+            </tr>
+       {% endfor %}
+    </tbody>
+</table>
+<h3>Total: ${{ "%.2f"|format(total) }}</h3>
+{% else %}
+<p>Your basket is empty.</p>
+{% endif %}
+{% endblock %}

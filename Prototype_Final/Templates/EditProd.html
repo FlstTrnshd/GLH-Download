@@ -1,0 +1,20 @@
+{% extends "Template.html" %}
+
+{% block header %}
+    {% block title %} GLH - Edit Listing {% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <form action="{{ url_for('edit_list_process', id=product) }}" method="POST">
+        <div class="TextIn">
+            <label>Item Name<br><input type="text" name="name", value="{{ prod_name }}"></label>
+            <label>Item Description<br><input type="text" name="desc", value="{{ prod_desc }}"></label>
+            <label>Units<br><input type="number" name="units", value="{{ prod_units }}"></label>
+            <label>Price per Unit<br><input type="number" name="unit-price" step="any", value="{{ prod_price }}"></label>
+            <label>Delivery<input type="checkbox" name="Delivery"></label>
+            <div class="Submit"><input style="align-items: center;" type="submit"></div>
+        </div>
+    </form>
+</div>
+{% endblock %}

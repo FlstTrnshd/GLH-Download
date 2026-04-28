@@ -1,0 +1,2 @@
+In this final Version, I completely revamped the sign in system to change from the Global System (placeholder) to a Flask-Login session-based system, so multiple users can be signed in at any given time, without issue.
+

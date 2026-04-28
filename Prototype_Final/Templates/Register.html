@@ -1,0 +1,23 @@
+{% extends "Template.html" %}
+
+{% block header %}
+    {% block title %} GLH - Register {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='WebCSS.css') }}">
+{% endblock %}
+
+# Source - https://stackoverflow.com/a/12278642
+# Posted by pacha, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-03-25, License - CC BY-SA 3.0
+
+{% block content %}
+<div class="content">
+<form action="{{ url_for('register_process') }}" method="POST">
+    <div class="TextIn">
+    <input type="text" name = "username">
+    <input type="password" name = "password">
+    <input type="password" name = "confpassword">
+    </div>
+    <div class="Submit"><input style="align-items: center;" type="submit"></div>
+</form>
+</div>
+{% endblock %}
